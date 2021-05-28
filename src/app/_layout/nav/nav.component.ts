@@ -1,6 +1,7 @@
-import { Component, OnInit, TRANSLATIONS } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { PaginatedGeneration, Paginateditems, PaginatedLocation } from 'src/app/_models/generation.model';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PaginatedGeneration, PaginatedLocation } from 'src/app/_models/generation.model';
+import { Paginateditems } from 'src/app/_models/pokemon.model';
 import { PokemonService } from 'src/app/_services/pokemon.service';
 
 @Component({

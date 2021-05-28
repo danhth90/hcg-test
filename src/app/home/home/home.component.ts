@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { PaginatedPokemon } from 'src/app/_models/pokemon.model';
+import { Observable } from 'rxjs';
+import { Paginateditems, PaginatedPokemon } from 'src/app/_models/pokemon.model';
 import { PokemonService } from 'src/app/_services/pokemon.service';
 
 @Component({
@@ -19,10 +19,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   heigthContent: number = 400;
   widthContent:number = window.innerWidth - 20;
   vmPokemon$ : Observable<PaginatedPokemon>;
+  vmItem$ : Observable<Paginateditems>;
   constructor(private pokeSvr: PokemonService) { }
 
   ngOnInit(): void {
     this.vmPokemon$ = this.pokeSvr.getPokemons(10);
+    this.vmItem$ = this.pokeSvr.getItems(10);
   }
 
   ngAfterViewInit(){

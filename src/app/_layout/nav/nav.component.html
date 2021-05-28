@@ -5,7 +5,7 @@
             <img src="https://www.the-hash.com/wp-content/uploads/2020/06/HCG-Logo.png" />
         </button>
     </div>
-    <div class="">
+    <div class="flex-1 text-right">
         <ul nz-menu
             nzMode="horizontal"
             class="text-right nav-menu">
@@ -21,18 +21,18 @@
                     </ng-container>
                 </ul>
             </li>
-            <li nz-submenu
-                nzTitle="Location"
-                nz-popover 
-                nzPopoverPlacement="bottomLeft"
-                [nzPopoverContent]="tmpLocation">
-                
-            </li>
-            <li nz-submenu
-            nzTitle="Items"
-            nz-popover 
+            
+            <!-- nz-popover 
             nzPopoverPlacement="bottomLeft"
-            [nzPopoverContent]="tmpItems">
+            [nzPopoverContent]="tmpLocation" -->
+            <li nz-menu-item>
+                Location
+            </li>
+            
+            <!-- nz-popover 
+            nzPopoverPlacement="bottomLeft"
+            [nzPopoverContent]="tmpItems" -->
+            <li nz-menu-item>Items
             </li>
         </ul>
     </div>

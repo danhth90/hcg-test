@@ -16,10 +16,3 @@ export interface PaginatedLocation{
     results: BaseResult[];
 }
 
-
-export interface Paginateditems{
-    count: number;
-    next: string;
-    previous: string;
-    results: BaseResult[];
-}

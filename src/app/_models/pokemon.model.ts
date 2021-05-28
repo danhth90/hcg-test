@@ -80,6 +80,7 @@ export interface Sprites {
   other?: Other;
   // versions?: Versions;
   animated?: Sprites;
+  default?: string;
 }
 
 export interface Other {
@@ -100,4 +101,28 @@ export interface SimplifiedPokemon {
   stats: Stat[];
   type: string;
   id?: number | string;
+}
+
+export interface SimplifiedItem {
+  name: string;
+  url?: string;
+  image: string;
+  id?: number | string;
+}
+
+
+export interface ItemDetail {
+  name: string;
+  url?: string;
+  image: string;
+  id?: number | string;
+  sprites: Sprites;
+}
+
+
+export interface Paginateditems{
+  count: number;
+  next: string;
+  previous: string;
+  results: SimplifiedItem[];
 }

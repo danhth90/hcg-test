@@ -1,30 +1,50 @@
 <div #trailer>
 </div>
-    <nz-carousel>
-        <div nz-carousel-content
-             *ngFor="let item of arrTrailer">
-            <iframe [width]="widthContent"
-                    [height]="heigthContent"
-                    [src]="item | safe">
-            </iframe>
-        </div>
-    </nz-carousel>
-<div #pokemon class="px-12">
+<nz-carousel>
+    <div nz-carousel-content
+         *ngFor="let item of arrTrailer">
+        <iframe [width]="widthContent"
+                [height]="heigthContent"
+                [src]="item | safe">
+        </iframe>
+    </div>
+</nz-carousel>
+<div #pokemon
+     class="px-12">
     <div class="flex">
         <div class='flex-1'>
             <div class="text-3">Top 10 Pokemon</div>
-    <div class="text-6">Get list pokemon on the world</div>
+            <div class="text-6">Get list pokemon on the world</div>
         </div>
         <div class="flex-1 text-right">
-            <button  nz-button routerLink="['list']">See more</button>
+            <button nz-button
+                    routerLink="['list']">See more</button>
         </div>
     </div>
     <div class="py-12">
-        <div class="grid gap-8 mt-10 md:grid-cols-2 lg:grid-cols-5" *ngIf="(vmPokemon$ | async) as vm">
+        <div class="grid gap-8 mt-10 md:grid-cols-2 lg:grid-cols-5"
+             *ngIf="(vmPokemon$ | async) as vm">
             <ng-container *ngFor="let item of vm.results">
                 <hcg-card-pokemon [id]="item?.id"></hcg-card-pokemon>
             </ng-container>
-        
+        </div>
     </div>
+</div>
+
+<div #items
+     class="px-12">
+    <div class="flex">
+        <div class='flex-1'>
+            <div class="text-3">Top 10 Items</div>
+            <div class="text-6">Display 10 items image and name</div>
+        </div>
+    </div>
+    <div class="py-12">
+        <div class="grid gap-8 mt-10 md:grid-cols-2 lg:grid-cols-5"
+             *ngIf="(vmItem$ | async) as vm">
+            <ng-container *ngFor="let item of vm.results">
+                <hcg-card-item [id]="item?.id"></hcg-card-item>
+            </ng-container>
+        </div>
     </div>
 </div>

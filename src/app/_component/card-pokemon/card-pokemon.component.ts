@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import {  NzModalService } from 'ng-zorro-antd/modal';
 import { SimplifiedPokemon } from 'src/app/_models/pokemon.model';
 import { PokemonService } from 'src/app/_services/pokemon.service';
-import { DetailPokemonComponent } from './detail-pokemon/detail-pokemon.component';
+import { DetailPokemonComponent } from './../detail-pokemon/detail-pokemon.component';
 
 @Component({
   selector: 'hcg-card-pokemon',

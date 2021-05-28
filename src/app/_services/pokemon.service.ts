@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
-import { PaginatedGeneration, Paginateditems, PaginatedLocation } from '../_models/generation.model';
-import { PaginatedPokemon,Pokemon, PokemonDetail, SimplifiedPokemon } from '../_models/pokemon.model';
+import { PaginatedGeneration, PaginatedLocation } from '../_models/generation.model';
+import { PaginatedPokemon,SimplifiedItem, PokemonDetail, SimplifiedPokemon, ItemDetail, Paginateditems } from '../_models/pokemon.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,33 @@ export class PokemonService {
     return this.http.get<PaginatedLocation>(`${this.baseUrl}location`);
   }
 
-  getItems(): Observable<Paginateditems>{
-    return this.http.get<Paginateditems>(`${this.baseUrl}item`);
+  getItems(limit = 20, offset = 0): Observable<Paginateditems>{
+    return this.http.get<Paginateditems>(`${this.baseUrl}item`, {
+      params: { limit, offset }
+    }).pipe(
+      delay(1500),
+      map((paginatedItem: Paginateditems) => {
+        return {
+          ...paginatedItem,
+          results: paginatedItem?.results.map(item => ({
+            ...item,
+            id: item.url
+              .split('/')
+              .filter(Boolean)
+              .pop()
+          }))
+        };
+      })
+    );
+  }
+
+  getItemDetail(id: string): Observable<SimplifiedItem> {
+    return this.http
+      .get(`${this.baseUrl}item/${id}`)
+      .pipe(
+        delay(1500), 
+        map((item: ItemDetail) => PokemonService.getSimplified(item))
+      );
   }
 
   getPokemons(limit = 20, offset = 0): Observable<PaginatedPokemon> {
@@ -64,6 +89,13 @@ export class PokemonService {
       image: pokemon?.sprites?.other?.['official-artwork']?.front_default || '',
       stats: pokemon?.stats || [],
       type: pokemon?.types[0].type?.name || ''
+    }
+  }
+
+  private static getSimplified(item: ItemDetail | null): SimplifiedItem {
+    return {
+      name: item?.name || '',
+      image: item?.sprites?.default || ''
     }
   }
 }
