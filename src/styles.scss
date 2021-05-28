@@ -2,3 +2,12 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
+/*Font*/
+$font-size-base: 1pt !default;
+$h1-font-size: $font-size-base * 27 !default;
+$h2-font-size: $font-size-base * 23 !default;
+$h3-font-size: $font-size-base * 18 !default;
+$h4-font-size: $font-size-base * 14 !default;
+$h5-font-size: $font-size-base * 11 !default;
+$h6-font-size: $font-size-base * 9 !default;
+$h7-font-size: $font-size-base * 7 !default;

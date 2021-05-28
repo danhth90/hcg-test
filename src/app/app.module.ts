@@ -11,12 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from './_layout/_layout.module';
+import { DetailPokemonComponent } from './_component/detail-pokemon/detail-pokemon.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DetailPokemonComponent
   ],
   imports: [
     BrowserModule,
