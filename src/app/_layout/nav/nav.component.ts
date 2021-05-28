@@ -1,6 +1,6 @@
 import { Component, OnInit, TRANSLATIONS } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { PaginatedGeneration } from 'src/app/_models/generation.model';
+import { PaginatedGeneration, Paginateditems, PaginatedLocation } from 'src/app/_models/generation.model';
 import { PokemonService } from 'src/app/_services/pokemon.service';
 
 @Component({
@@ -10,10 +10,14 @@ import { PokemonService } from 'src/app/_services/pokemon.service';
 })
 export class NavComponent implements OnInit {
   
-  vm$: Observable<PaginatedGeneration>;
+  vmGeneration$: Observable<PaginatedGeneration>;
+  vmLocation$: Observable<PaginatedLocation>;
+  vmItem$: Observable<Paginateditems>;
   
   constructor(private pokeSvr: PokemonService) { 
-    this.vm$ = this.pokeSvr.getGenerations();
+    this.vmGeneration$ = this.pokeSvr.getGenerations();
+    this.vmLocation$ = this.pokeSvr.getLocations();
+    this.vmItem$ = this.pokeSvr.getItems();
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-export interface Generation{
+export interface BaseResult{
     name: string;
     url: string;
 }
@@ -6,5 +6,20 @@ export interface PaginatedGeneration{
     count: number;
     next: string;
     previous: string;
-    results: Generation[];
+    results: BaseResult[];
+}
+
+export interface PaginatedLocation{
+    count: number;
+    next: string;
+    previous: string;
+    results: BaseResult[];
+}
+
+
+export interface Paginateditems{
+    count: number;
+    next: string;
+    previous: string;
+    results: BaseResult[];
 }
